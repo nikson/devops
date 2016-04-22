@@ -16,7 +16,7 @@ pushd %buildpath%
 
 REM if required stop previous running instance by checking the ports 
 echo Searching open ports: %ports%
-FOR /F "tokens=5 delims= " %%P IN ('netstat -ano ^| findstr %ports%') DO TaskKill.exe /F /PID %%P
+FOR /F "tokens=5 delims= " %%P IN ('netstat -ano ^| findstr %ports%') DO taskkill /F /PID %%P
 
 REM wait few seconds
 timeout /t 5 >nul
