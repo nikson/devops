@@ -40,13 +40,13 @@ set /A count = 1
 	echo Waiting for server......
 	FOR /F "tokens=5 delims= " %%P IN ('netstat -ano ^| findstr %ports%') DO (
 		echo Server Started Successfully.... 
-		goto end
+		goto pass 
 	)
 	
 REM wait 10*12=120 seconds
 	if %count% == 12 (
 		echo Error: Server not started....
-		goto end
+		goto failed
 	) else (
 		ping localhost -n 11 > nul
 		set /A count = %count% + 1
@@ -54,8 +54,16 @@ REM wait 10*12=120 seconds
 	)
 	
 	
+:pass
+echo Success....
+goto end
+
+:failed
+echo Error:.....Failed.......
+exit /B 1 
+
 :end
 echo.
-echo Done
-echo.
+echo Task Finished.....
 exit
+

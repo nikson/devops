@@ -70,6 +70,7 @@ goto end
 
 :failed
 echo Error:.....Failed.......
+exit /B 1 
 
 :end
 echo.
