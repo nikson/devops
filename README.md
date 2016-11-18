@@ -1,10 +1,12 @@
-# DevOps: development & operations  
+# DevOps: Development & Operations  
 
 ### Docker 
 
 1. [Configuration of Nginx](docker-conf/nginx/Dockerfile)
 
-### Vagrant 
+### Vagrant  
+
+1. [Configuration of Nginx](vagrant-conf/nginx/Vagrantfile)
 
 
 ### Bash/Batch Scripting 
