@@ -1,0 +1,23 @@
+# Vagrant configuraion of nginx
+
+Vagrant.configure("2") do |config|
+	config.vm.box = "ubuntu/trusty64"
+	
+	config.vm.provider "virtualbox" do |v|
+		v.name = "Ubuntu 14.04, Vagrant test"
+	end	
+	
+	# provisioning using bash script
+	# config.vm.provision :shell, inline: "mkdir -p /etc/nginx | chmod -R 777 /etc/nginx"
+	config.vm.provision :shell, path: "bootstrap.sh"
+	config.vm.provision "file", source: "nginx.conf", destination: "/etc/nginx/conf.d/default.conf"	
+	
+	# Sync host folder into guest
+	config.vm.synced_folder "static", "/usr/share/nginx/html"
+	
+	# Guest port forwarded to host 
+	config.vm.network :forwarded_port, guest: 80, host: 8000	
+	
+end
+
+
