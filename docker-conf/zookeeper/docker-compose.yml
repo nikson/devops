@@ -1,0 +1,29 @@
+--- 
+version: '2'
+services:
+    s1:
+        image: zookeeper
+        restart: always
+        ports:
+            - 2181
+        environment:
+            ZOO_MY_ID: 1
+            ZOO_SERVERS: server.1=s1:2888:3888 server.2=s2:2888:3888 server.3=s3:2888:3888
+
+    s2:
+        image: zookeeper
+        restart: always
+        ports:
+            - 2181
+        environment:
+            ZOO_MY_ID: 2
+            ZOO_SERVERS: server.1=s1:2888:3888 server.2=s2:2888:3888 server.3=s3:2888:3888
+
+    s3:
+        image: zookeeper
+        restart: always
+        ports:
+            - 2181
+        environment:
+            ZOO_MY_ID: 3
+            ZOO_SERVERS: server.1=s1:2888:3888 server.2=s2:2888:3888 server.3=s3:2888:3888
